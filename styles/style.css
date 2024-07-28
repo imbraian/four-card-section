@@ -32,7 +32,7 @@ h1 span {
   font-weight: 600;
 }
 
-h1 ~ p {
+h1~p {
   text-align: center;
   font-size: 0.8125rem;
   font-size: clamp(0.8125rem, 0.5892rem + 1.116vw, 1.125rem);
@@ -47,6 +47,8 @@ p {
 .container {
   display: flex;
   flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 25px;
   margin-block-start: 50px;
 }
@@ -60,23 +62,28 @@ p {
   box-shadow: 0 0 15px 3px #0000002f;
   transition: 0.3s;
   cursor: pointer;
+
   &:hover {
     transform: scale(1.03);
   }
+
   .card__title {
     font-size: 1.0625rem;
     font-size: clamp(1.0625rem, 0.75rem + 1.5625vw, 1.5rem);
   }
+
   .card__description {
     font-size: 0.75rem;
     font-size: clamp(0.75rem, 0.5714rem + 0.8928vw, 1rem);
     margin-block-start: 5px;
     margin-block-end: 30px;
   }
+
   .card__image {
     display: flex;
     justify-content: end;
   }
+
   .card__img {
     width: 50px;
     height: 50px;
@@ -90,16 +97,41 @@ p {
 .border-2 {
   border-top: 4px solid hsl(0, 78%, 62%);
 }
+
 .border-3 {
   border-top: 4px solid hsl(34, 97%, 64%);
 }
+
 .border-4 {
   border-top: 4px solid hsl(212, 86%, 64%);
 }
 
 @media (width > 768px) {
   .container {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 25px;
+  }
+
+  .border-1 {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 2;
+  }
+
+  .border-2 {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 2;
+  }
+
+  .border-3 {
+    grid-column: 3 / span 2;
+    grid-row: 3 / span 2;
+  }
+
+  .border-4 {
+    grid-column: 5 / span 2;
+    grid-row: 2 / span 2;
   }
 }
